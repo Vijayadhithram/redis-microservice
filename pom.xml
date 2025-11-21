@@ -1,20 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
+
+    <!-- Spring Boot parent (keep as you used) -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.2.5.RELEASE</version>
+        <version>4.0.0</version>
         <relativePath/>
     </parent>
 
     <groupId>io.redis.demos</groupId>
     <artifactId>cache-invalidation-cdc-debezium</artifactId>
-    <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>cache-invalidation-cdc-debezium</name>
+    <description>cache invalidation cdc debezium</description>
 
+    <!-- IMPORTANT: parent project MUST use pom packaging -->
+    <packaging>pom</packaging>
+
+    <!-- Multi-module structure -->
     <modules>
         <module>caching-service</module>
         <module>db-to-streams-service</module>
@@ -24,40 +32,21 @@
     </modules>
 
     <properties>
-        <java.version>1.8</java.version>
-        <version.jedis>3.4.1</version.jedis>
-        <version.jredisgraph>2.2.0</version.jredisgraph>
-        <version.jredisearch>2.0.0</version.jredisearch>
-        <version.debezium>1.1.0.Final</version.debezium>
-        <version.springboot>2.2.5.RELEASE</version.springboot>
-        <version.javax.inject>1</version.javax.inject>
+        <java.version>21</java.version>
     </properties>
 
-    <repositories>
-        <repository>
-            <id>snapshots-repo</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </repository>
-    </repositories>
+    <!-- Parent should NOT contain normal Spring Boot dependencies -->
+    <!-- You can add shared version properties later if you need -->
 
     <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                    <annotationProcessorPaths>
-                        <path>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                            <version>1.18.12</version>
-                        </path>
-                    </annotationProcessorPaths>
-                </configuration>
-            </plugin>
-        </plugins>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                </plugin>
+            </plugins>
+        </pluginManagement>
     </build>
+
 </project>
