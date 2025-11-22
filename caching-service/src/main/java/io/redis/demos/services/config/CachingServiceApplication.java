@@ -1,4 +1,5 @@
-package com.example.caching_service;
+package io.redis.demos.services.config;
+
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -7,7 +8,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class CachingServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CachingServiceApplication.class, args);
-	}
 
+		SpringApplication.run(CachingServiceApplication.class, args);
+
+	}
 }

@@ -1,4 +1,4 @@
-package com.example.caching_service;
+package io.redis.demos.services.config;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
