@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.Properties;
 
+
 @Configuration
 public class ConnectorConfig {
 
@@ -35,5 +36,26 @@ public class ConnectorConfig {
 
      @Value("${table.whitelist}")
      private String tableWhitelist;
+
+     public io.debezium.config.Configuration createConnectorConfig() {
+          Properties props = new Properties();
+
+          props.setProperty("name", "cacheserviceengine");
+          props.setProperty("connector.class", "io.debezium.connector.mysql.MySqlConnector");
+
+          props.setProperty("database.hostname", databaseHostname);
+          props.setProperty("database.name", databaseName);
+          props.setProperty("database.port", databasePort);
+          props.setProperty("database.user", databaseUser);
+          props.setProperty("database.password", databasePassword);
+          props.setProperty("database.server.id", databaseServerId);
+          props.setProperty("database.server.name", databaseServerName);
+          props.setProperty("database.history", "io.debezium.relational.history.FileDatabaseHistory");
+          props.setProperty("database.history.file.filename", "./dbhistory.dat");
+          props.setProperty("table.whitelist", tableWhitelist);
+
+
+
+     }
 
 }

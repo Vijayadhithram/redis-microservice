@@ -33,6 +33,7 @@
 
     <properties>
         <java.version>21</java.version>
+        <version.debezium>3.3.1.Final</version.debezium>
     </properties>
 
     <!-- Parent should NOT contain normal Spring Boot dependencies -->
